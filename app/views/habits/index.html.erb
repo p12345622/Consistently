@@ -1,0 +1,18 @@
+<h1 class="text-2xl font-bold mb-4">My Habits</h1>
+
+<% @habits.each do |habit| %>
+  <div class="p-4 border rounded mb-4">
+    <h2 class="text-xl font-semibold"><%= habit.name %></h2>
+
+    <!-- Check-in button -->
+    <%= form_with url: check_in_habit_path(habit), method: :post, local: true do %>
+      <%= date_field_tag :date, Date.today, class: "border p-1 rounded" %>
+      <%= submit_tag "Check In", class: "bg-green-600 text-white px-3 py-1 rounded ml-2" %>
+    <% end %>
+
+    <p class="text-sm mt-2">
+      Current Streak: <%= habit.current_streak %> |
+      Longest: <%= habit.longest_streak %>
+    </p>
+  </div>
+<% end %>

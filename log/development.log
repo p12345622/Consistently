@@ -53,3 +53,994 @@ FOREIGN KEY ("habit_id")
   [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
   [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(1480017638596448595)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Delete All (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alice@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "alice@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-06-04 09:12:58.752962"], ["updated_at", "2025-06-04 09:12:58.752962"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bob@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "bob@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-06-04 09:12:58.931960"], ["updated_at", "2025-06-04 09:12:58.931960"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "charlie@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "charlie@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2025-06-04 09:12:59.110342"], ["updated_at", "2025-06-04 09:12:59.110342"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabit Create (1.4ms)[0m  [1m[32mINSERT INTO "habits" ("name", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Workout"], ["description", "Track your habit: Workout"], ["user_id", 1], ["created_at", "2025-06-04 09:12:59.132954"], ["updated_at", "2025-06-04 09:12:59.132954"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-03"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.5ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-06-03"], ["created_at", "2025-06-04 09:12:59.145315"], ["updated_at", "2025-06-04 09:12:59.145315"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-02"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-06-02"], ["created_at", "2025-06-04 09:12:59.149558"], ["updated_at", "2025-06-04 09:12:59.149558"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-01"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-06-01"], ["created_at", "2025-06-04 09:12:59.153322"], ["updated_at", "2025-06-04 09:12:59.153322"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-30"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-30"], ["created_at", "2025-06-04 09:12:59.156543"], ["updated_at", "2025-06-04 09:12:59.156543"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-29"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-29"], ["created_at", "2025-06-04 09:12:59.159658"], ["updated_at", "2025-06-04 09:12:59.159658"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-28"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-28"], ["created_at", "2025-06-04 09:12:59.163029"], ["updated_at", "2025-06-04 09:12:59.163029"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-27"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-27"], ["created_at", "2025-06-04 09:12:59.167800"], ["updated_at", "2025-06-04 09:12:59.167800"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-25"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-25"], ["created_at", "2025-06-04 09:12:59.173739"], ["updated_at", "2025-06-04 09:12:59.173739"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-24"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-24"], ["created_at", "2025-06-04 09:12:59.179789"], ["updated_at", "2025-06-04 09:12:59.179789"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-23"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-23"], ["created_at", "2025-06-04 09:12:59.185462"], ["updated_at", "2025-06-04 09:12:59.185462"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-22"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-22"], ["created_at", "2025-06-04 09:12:59.190847"], ["updated_at", "2025-06-04 09:12:59.190847"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-21"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-21"], ["created_at", "2025-06-04 09:12:59.196663"], ["updated_at", "2025-06-04 09:12:59.196663"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-19"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-19"], ["created_at", "2025-06-04 09:12:59.202627"], ["updated_at", "2025-06-04 09:12:59.202627"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-18"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-18"], ["created_at", "2025-06-04 09:12:59.208631"], ["updated_at", "2025-06-04 09:12:59.208631"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-16"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-16"], ["created_at", "2025-06-04 09:12:59.214665"], ["updated_at", "2025-06-04 09:12:59.214665"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-15"], ["habit_id", 1], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-05-15"], ["created_at", "2025-06-04 09:12:59.220557"], ["updated_at", "2025-06-04 09:12:59.220557"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabit Create (1.5ms)[0m  [1m[32mINSERT INTO "habits" ("name", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Meditate"], ["description", "Track your habit: Meditate"], ["user_id", 1], ["created_at", "2025-06-04 09:12:59.224168"], ["updated_at", "2025-06-04 09:12:59.224168"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-04"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.5ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-06-04"], ["created_at", "2025-06-04 09:12:59.235665"], ["updated_at", "2025-06-04 09:12:59.235665"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-02"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.5ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-06-02"], ["created_at", "2025-06-04 09:12:59.241332"], ["updated_at", "2025-06-04 09:12:59.241332"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-29"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-29"], ["created_at", "2025-06-04 09:12:59.246250"], ["updated_at", "2025-06-04 09:12:59.246250"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-27"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-27"], ["created_at", "2025-06-04 09:12:59.250658"], ["updated_at", "2025-06-04 09:12:59.250658"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-25"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-25"], ["created_at", "2025-06-04 09:12:59.254337"], ["updated_at", "2025-06-04 09:12:59.254337"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-24"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-24"], ["created_at", "2025-06-04 09:12:59.258401"], ["updated_at", "2025-06-04 09:12:59.258401"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-22"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-22"], ["created_at", "2025-06-04 09:12:59.264660"], ["updated_at", "2025-06-04 09:12:59.264660"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-19"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.5ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-19"], ["created_at", "2025-06-04 09:12:59.270751"], ["updated_at", "2025-06-04 09:12:59.270751"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-18"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.5ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-18"], ["created_at", "2025-06-04 09:12:59.275167"], ["updated_at", "2025-06-04 09:12:59.275167"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-17"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-17"], ["created_at", "2025-06-04 09:12:59.279513"], ["updated_at", "2025-06-04 09:12:59.279513"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-16"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-16"], ["created_at", "2025-06-04 09:12:59.283569"], ["updated_at", "2025-06-04 09:12:59.283569"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-15"], ["habit_id", 2], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 2], ["checked_on", "2025-05-15"], ["created_at", "2025-06-04 09:12:59.287568"], ["updated_at", "2025-06-04 09:12:59.287568"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabit Create (1.2ms)[0m  [1m[32mINSERT INTO "habits" ("name", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Meditate"], ["description", "Track your habit: Meditate"], ["user_id", 2], ["created_at", "2025-06-04 09:12:59.289939"], ["updated_at", "2025-06-04 09:12:59.289939"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-03"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-06-03"], ["created_at", "2025-06-04 09:12:59.294271"], ["updated_at", "2025-06-04 09:12:59.294271"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-02"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-06-02"], ["created_at", "2025-06-04 09:12:59.298554"], ["updated_at", "2025-06-04 09:12:59.298554"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-01"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-06-01"], ["created_at", "2025-06-04 09:12:59.304271"], ["updated_at", "2025-06-04 09:12:59.304271"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-31"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-31"], ["created_at", "2025-06-04 09:12:59.309819"], ["updated_at", "2025-06-04 09:12:59.309819"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-30"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-30"], ["created_at", "2025-06-04 09:12:59.313572"], ["updated_at", "2025-06-04 09:12:59.313572"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-27"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-27"], ["created_at", "2025-06-04 09:12:59.317017"], ["updated_at", "2025-06-04 09:12:59.317017"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-26"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-26"], ["created_at", "2025-06-04 09:12:59.322773"], ["updated_at", "2025-06-04 09:12:59.322773"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-24"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-24"], ["created_at", "2025-06-04 09:12:59.328823"], ["updated_at", "2025-06-04 09:12:59.328823"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-23"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-23"], ["created_at", "2025-06-04 09:12:59.334724"], ["updated_at", "2025-06-04 09:12:59.334724"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-22"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-22"], ["created_at", "2025-06-04 09:12:59.338842"], ["updated_at", "2025-06-04 09:12:59.338842"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-21"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-21"], ["created_at", "2025-06-04 09:12:59.342401"], ["updated_at", "2025-06-04 09:12:59.342401"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-20"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-20"], ["created_at", "2025-06-04 09:12:59.346066"], ["updated_at", "2025-06-04 09:12:59.346066"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-19"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-19"], ["created_at", "2025-06-04 09:12:59.349856"], ["updated_at", "2025-06-04 09:12:59.349856"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-18"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-18"], ["created_at", "2025-06-04 09:12:59.353662"], ["updated_at", "2025-06-04 09:12:59.353662"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-16"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-16"], ["created_at", "2025-06-04 09:12:59.357441"], ["updated_at", "2025-06-04 09:12:59.357441"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-15"], ["habit_id", 3], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 3], ["checked_on", "2025-05-15"], ["created_at", "2025-06-04 09:12:59.361088"], ["updated_at", "2025-06-04 09:12:59.361088"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabit Create (1.0ms)[0m  [1m[32mINSERT INTO "habits" ("name", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Meditate"], ["description", "Track your habit: Meditate"], ["user_id", 2], ["created_at", "2025-06-04 09:12:59.363231"], ["updated_at", "2025-06-04 09:12:59.363231"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-04"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-06-04"], ["created_at", "2025-06-04 09:12:59.367847"], ["updated_at", "2025-06-04 09:12:59.367847"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-03"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-06-03"], ["created_at", "2025-06-04 09:12:59.371569"], ["updated_at", "2025-06-04 09:12:59.371569"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-02"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-06-02"], ["created_at", "2025-06-04 09:12:59.375354"], ["updated_at", "2025-06-04 09:12:59.375354"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-01"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-06-01"], ["created_at", "2025-06-04 09:12:59.379017"], ["updated_at", "2025-06-04 09:12:59.379017"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-28"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-28"], ["created_at", "2025-06-04 09:12:59.382720"], ["updated_at", "2025-06-04 09:12:59.382720"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-27"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-27"], ["created_at", "2025-06-04 09:12:59.386440"], ["updated_at", "2025-06-04 09:12:59.386440"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-26"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-26"], ["created_at", "2025-06-04 09:12:59.390174"], ["updated_at", "2025-06-04 09:12:59.390174"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-24"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.5ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-24"], ["created_at", "2025-06-04 09:12:59.394244"], ["updated_at", "2025-06-04 09:12:59.394244"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-21"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-21"], ["created_at", "2025-06-04 09:12:59.397892"], ["updated_at", "2025-06-04 09:12:59.397892"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-20"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-20"], ["created_at", "2025-06-04 09:12:59.401520"], ["updated_at", "2025-06-04 09:12:59.401520"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-18"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-18"], ["created_at", "2025-06-04 09:12:59.405079"], ["updated_at", "2025-06-04 09:12:59.405079"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-17"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-17"], ["created_at", "2025-06-04 09:12:59.408728"], ["updated_at", "2025-06-04 09:12:59.408728"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-16"], ["habit_id", 4], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 4], ["checked_on", "2025-05-16"], ["created_at", "2025-06-04 09:12:59.412309"], ["updated_at", "2025-06-04 09:12:59.412309"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabit Create (1.0ms)[0m  [1m[32mINSERT INTO "habits" ("name", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Workout"], ["description", "Track your habit: Workout"], ["user_id", 3], ["created_at", "2025-06-04 09:12:59.414068"], ["updated_at", "2025-06-04 09:12:59.414068"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-04"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-06-04"], ["created_at", "2025-06-04 09:12:59.418279"], ["updated_at", "2025-06-04 09:12:59.418279"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-03"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.4ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-06-03"], ["created_at", "2025-06-04 09:12:59.421828"], ["updated_at", "2025-06-04 09:12:59.421828"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-01"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-06-01"], ["created_at", "2025-06-04 09:12:59.425323"], ["updated_at", "2025-06-04 09:12:59.425323"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-31"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-05-31"], ["created_at", "2025-06-04 09:12:59.428803"], ["updated_at", "2025-06-04 09:12:59.428803"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-28"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-05-28"], ["created_at", "2025-06-04 09:12:59.432049"], ["updated_at", "2025-06-04 09:12:59.432049"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-27"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-05-27"], ["created_at", "2025-06-04 09:12:59.435276"], ["updated_at", "2025-06-04 09:12:59.435276"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-21"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.1ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-05-21"], ["created_at", "2025-06-04 09:12:59.438194"], ["updated_at", "2025-06-04 09:12:59.438194"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-20"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.1ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-05-20"], ["created_at", "2025-06-04 09:12:59.440892"], ["updated_at", "2025-06-04 09:12:59.440892"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-19"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.1ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-05-19"], ["created_at", "2025-06-04 09:12:59.443654"], ["updated_at", "2025-06-04 09:12:59.443654"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-16"], ["habit_id", 5], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.1ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 5], ["checked_on", "2025-05-16"], ["created_at", "2025-06-04 09:12:59.446394"], ["updated_at", "2025-06-04 09:12:59.446394"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabit Create (0.7ms)[0m  [1m[32mINSERT INTO "habits" ("name", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Workout"], ["description", "Track your habit: Workout"], ["user_id", 3], ["created_at", "2025-06-04 09:12:59.447951"], ["updated_at", "2025-06-04 09:12:59.447951"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-04"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-06-04"], ["created_at", "2025-06-04 09:12:59.451587"], ["updated_at", "2025-06-04 09:12:59.451587"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-02"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-06-02"], ["created_at", "2025-06-04 09:12:59.454840"], ["updated_at", "2025-06-04 09:12:59.454840"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-30"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.3ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-05-30"], ["created_at", "2025-06-04 09:12:59.458098"], ["updated_at", "2025-06-04 09:12:59.458098"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-28"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-05-28"], ["created_at", "2025-06-04 09:12:59.461438"], ["updated_at", "2025-06-04 09:12:59.461438"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-27"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.1ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-05-27"], ["created_at", "2025-06-04 09:12:59.464832"], ["updated_at", "2025-06-04 09:12:59.464832"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-26"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.1ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-05-26"], ["created_at", "2025-06-04 09:12:59.467820"], ["updated_at", "2025-06-04 09:12:59.467820"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-22"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.1ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-05-22"], ["created_at", "2025-06-04 09:12:59.470516"], ["updated_at", "2025-06-04 09:12:59.470516"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-21"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-05-21"], ["created_at", "2025-06-04 09:12:59.473160"], ["updated_at", "2025-06-04 09:12:59.473160"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-20"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-05-20"], ["created_at", "2025-06-04 09:12:59.476420"], ["updated_at", "2025-06-04 09:12:59.476420"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHabitCheckin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-05-18"], ["habit_id", 6], ["LIMIT", 1]]
+  [1m[36mHabitCheckin Create (0.2ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 6], ["checked_on", "2025-05-18"], ["created_at", "2025-06-04 09:12:59.479673"], ["updated_at", "2025-06-04 09:12:59.479673"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2025-06-04 15:45:05 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DashboardController#index as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms | Allocations: 5007)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-06-04 15:45:05 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/actual/.rvm/gems/ruby-3.0.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/actual/.rvm/gems/ruby-3.0.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 624)
+  Rendered /home/actual/.rvm/gems/ruby-3.0.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 4027)
+  Rendered layout layouts/application.html.erb (Duration: 200.9ms | Allocations: 84769)
+Completed 200 OK in 238ms (Views: 207.4ms | ActiveRecord: 6.0ms | Allocations: 115640)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-06-04 15:45:11 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.5ms | Allocations: 6078)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering /home/actual/.rvm/gems/ruby-3.0.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/actual/.rvm/gems/ruby-3.0.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 122)
+  Rendered /home/actual/.rvm/gems/ruby-3.0.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 12.0ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 24.3ms | Allocations: 1801)
+Completed 200 OK in 213ms (Views: 24.7ms | ActiveRecord: 0.0ms | Allocations: 3360)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-06-04 15:45:43 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"alice@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "alice@example.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 183ms (ActiveRecord: 0.3ms | Allocations: 6007)
+
+
+Started GET "/" for ::1 at 2025-06-04 15:45:43 +0530
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mHabit Load (0.2ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/dashboard/index.html.erb:4
+  [1m[36mHabitCheckin Load (0.3ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" IN ($1, $2)[0m  [["habit_id", 1], ["habit_id", 2]]
+  ↳ app/views/dashboard/index.html.erb:4
+  [1m[36mHabitCheckin Pluck (0.1ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:45:in `consistency_percentage'
+  [1m[36mCACHE HabitCheckin Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:47:in `consistency_percentage'
+  [1m[36mHabitCheckin Pluck (0.2ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:45:in `consistency_percentage'
+  [1m[36mCACHE HabitCheckin Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:47:in `consistency_percentage'
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 29.5ms | Allocations: 47989)
+  Rendered layout layouts/application.html.erb (Duration: 30.4ms | Allocations: 48974)
+Completed 200 OK in 46ms (Views: 28.3ms | ActiveRecord: 5.5ms | Allocations: 59255)
+
+
+Started POST "/habits/1/check_in" for ::1 at 2025-06-04 15:45:56 +0530
+Processing by HabitsController#check_in as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHabit Load (0.3ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:48:in `set_habit'
+  [1m[36mHabitCheckin Load (0.1ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 AND "habit_checkins"."checked_on" = $2 LIMIT $3[0m  [["habit_id", 1], ["checked_on", "2025-06-04"], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:41:in `check_in'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/habits_controller.rb:41:in `check_in'
+  [1m[36mHabitCheckin Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-04"], ["habit_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:41:in `check_in'
+  [1m[36mHabitCheckin Create (0.5ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-06-04"], ["created_at", "2025-06-04 10:15:56.750173"], ["updated_at", "2025-06-04 10:15:56.750173"]]
+  ↳ app/controllers/habits_controller.rb:41:in `check_in'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/habits_controller.rb:41:in `check_in'
+Redirected to http://localhost:3000/habits
+Completed 302 Found in 14ms (ActiveRecord: 5.6ms | Allocations: 7986)
+
+
+Started GET "/habits" for ::1 at 2025-06-04 15:45:56 +0530
+Processing by HabitsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 3ms (ActiveRecord: 0.3ms | Allocations: 2345)
+
+
+  
+ActionController::MissingExactTemplate (HabitsController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.12) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.12) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.15) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.15) lib/rack/etag.rb:29:in `call'
+rack (3.1.15) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.15) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.15) lib/rack/method_override.rb:28:in `call'
+rack (3.1.15) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.15) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started POST "/habits/2/check_in" for ::1 at 2025-06-04 15:46:10 +0530
+Processing by HabitsController#check_in as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHabit Load (0.4ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:48:in `set_habit'
+  [1m[36mHabitCheckin Load (0.2ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 AND "habit_checkins"."checked_on" = $2 LIMIT $3[0m  [["habit_id", 2], ["checked_on", "2025-06-04"], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:41:in `check_in'
+Redirected to http://localhost:3000/habits
+Completed 302 Found in 8ms (ActiveRecord: 0.9ms | Allocations: 3189)
+
+
+Started GET "/habits" for ::1 at 2025-06-04 15:46:10 +0530
+Processing by HabitsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 2ms (ActiveRecord: 0.2ms | Allocations: 2089)
+
+
+  
+ActionController::MissingExactTemplate (HabitsController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.12) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.12) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.15) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.15) lib/rack/etag.rb:29:in `call'
+rack (3.1.15) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.15) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.15) lib/rack/method_override.rb:28:in `call'
+rack (3.1.15) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.15) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started POST "/habits/1/check_in" for ::1 at 2025-06-04 15:49:19 +0530
+Processing by HabitsController#check_in as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHabit Load (0.2ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:48:in `set_habit'
+  [1m[36mHabitCheckin Load (0.2ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 AND "habit_checkins"."checked_on" = $2 LIMIT $3[0m  [["habit_id", 1], ["checked_on", "2025-06-04"], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:41:in `check_in'
+Redirected to http://localhost:3000/habits
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms | Allocations: 3225)
+
+
+Started GET "/habits" for ::1 at 2025-06-04 15:49:19 +0530
+Processing by HabitsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 3ms (ActiveRecord: 0.2ms | Allocations: 2078)
+
+
+  
+ActionController::MissingExactTemplate (HabitsController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.12) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.12) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.15) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.15) lib/rack/etag.rb:29:in `call'
+rack (3.1.15) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.15) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.15) lib/rack/method_override.rb:28:in `call'
+rack (3.1.15) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.15) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started POST "/habits/1/check_in" for ::1 at 2025-06-04 16:00:12 +0530
+Processing by HabitsController#check_in as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHabit Load (0.2ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:59:in `set_habit'
+  [1m[36mCACHE Habit Load (0.0ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:40:in `check_in'
+  [1m[36mHabitCheckin Load (0.4ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 AND "habit_checkins"."checked_on" = $2 LIMIT $3[0m  [["habit_id", 1], ["checked_on", "2025-06-04"], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:43:in `check_in'
+Redirected to http://localhost:3000/habits
+Completed 302 Found in 26ms (ActiveRecord: 3.6ms | Allocations: 24399)
+
+
+Started GET "/habits" for ::1 at 2025-06-04 16:00:12 +0530
+Processing by HabitsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering habits/index.html.erb within layouts/application
+  [1m[36mHabit Load (0.1ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Load (0.2ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" IN ($1, $2)[0m  [["habit_id", 1], ["habit_id", 2]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Pluck (0.1ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Pluck (0.2ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  Rendered habits/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 6504)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 7727)
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.8ms | Allocations: 10333)
+
+
+Started POST "/habits/1/check_in" for ::1 at 2025-06-04 16:01:19 +0530
+Processing by HabitsController#check_in as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "date"=>"2025-06-04", "commit"=>"Check In", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHabit Load (0.2ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:59:in `set_habit'
+  [1m[36mCACHE Habit Load (0.0ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:40:in `check_in'
+  [1m[36mHabitCheckin Load (0.3ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 AND "habit_checkins"."checked_on" = $2 LIMIT $3[0m  [["habit_id", 1], ["checked_on", "2025-06-04"], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:43:in `check_in'
+Redirected to http://localhost:3000/habits
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms | Allocations: 3855)
+
+
+Started GET "/habits" for ::1 at 2025-06-04 16:01:19 +0530
+Processing by HabitsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering habits/index.html.erb within layouts/application
+  [1m[36mHabit Load (0.4ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Load (0.5ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" IN ($1, $2)[0m  [["habit_id", 1], ["habit_id", 2]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Pluck (0.2ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Pluck (0.4ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  Rendered habits/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 5626)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 6554)
+Completed 200 OK in 12ms (Views: 7.4ms | ActiveRecord: 1.7ms | Allocations: 8330)
+
+
+Started POST "/habits/1/check_in" for ::1 at 2025-06-04 16:01:22 +0530
+Processing by HabitsController#check_in as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "date"=>"2025-06-04", "commit"=>"Check In", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHabit Load (0.4ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:59:in `set_habit'
+  [1m[36mCACHE Habit Load (0.0ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:40:in `check_in'
+  [1m[36mHabitCheckin Load (0.3ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 AND "habit_checkins"."checked_on" = $2 LIMIT $3[0m  [["habit_id", 1], ["checked_on", "2025-06-04"], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:43:in `check_in'
+Redirected to http://localhost:3000/habits
+Completed 302 Found in 11ms (ActiveRecord: 1.0ms | Allocations: 3844)
+
+
+Started GET "/habits" for ::1 at 2025-06-04 16:01:22 +0530
+Processing by HabitsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering habits/index.html.erb within layouts/application
+  [1m[36mHabit Load (0.1ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Load (0.5ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" IN ($1, $2)[0m  [["habit_id", 1], ["habit_id", 2]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Pluck (0.5ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Pluck (0.3ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  Rendered habits/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 5620)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 6548)
+Completed 200 OK in 10ms (Views: 5.8ms | ActiveRecord: 1.7ms | Allocations: 8330)
+
+
+Started GET "/" for ::1 at 2025-06-04 16:06:08 +0530
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mHabit Load (0.4ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/dashboard/index.html.erb:4
+  [1m[36mHabitCheckin Load (0.4ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" IN ($1, $2)[0m  [["habit_id", 1], ["habit_id", 2]]
+  ↳ app/views/dashboard/index.html.erb:4
+  [1m[36mHabitCheckin Pluck (0.3ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:45:in `consistency_percentage'
+  [1m[36mCACHE HabitCheckin Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:47:in `consistency_percentage'
+  [1m[36mHabitCheckin Pluck (0.3ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:45:in `consistency_percentage'
+  [1m[36mCACHE HabitCheckin Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:47:in `consistency_percentage'
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 8322)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 9248)
+Completed 200 OK in 14ms (Views: 9.1ms | ActiveRecord: 2.2ms | Allocations: 11228)
+
+
+Started POST "/habits/2/check_in" for ::1 at 2025-06-04 16:06:24 +0530
+Processing by HabitsController#check_in as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHabit Load (0.5ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:59:in `set_habit'
+  [1m[36mCACHE Habit Load (0.0ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:40:in `check_in'
+  [1m[36mHabitCheckin Load (0.3ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 AND "habit_checkins"."checked_on" = $2 LIMIT $3[0m  [["habit_id", 2], ["checked_on", "2025-06-04"], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:43:in `check_in'
+Redirected to http://localhost:3000/habits
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms | Allocations: 3829)
+
+
+Started GET "/habits" for ::1 at 2025-06-04 16:06:24 +0530
+Processing by HabitsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering habits/index.html.erb within layouts/application
+  [1m[36mHabit Load (0.1ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Load (0.2ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" IN ($1, $2)[0m  [["habit_id", 1], ["habit_id", 2]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Pluck (0.1ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Pluck (0.2ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  Rendered habits/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 5619)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 6547)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 0.9ms | Allocations: 8323)
+
+
+Started POST "/habits/1/check_in" for ::1 at 2025-06-04 16:06:36 +0530
+Processing by HabitsController#check_in as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "date"=>"2025-06-05", "commit"=>"Check In", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHabit Load (0.3ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:59:in `set_habit'
+  [1m[36mCACHE Habit Load (0.0ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1 AND "habits"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:40:in `check_in'
+  [1m[36mHabitCheckin Load (0.2ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 AND "habit_checkins"."checked_on" = $2 LIMIT $3[0m  [["habit_id", 1], ["checked_on", "2025-06-05"], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:43:in `check_in'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/habits_controller.rb:46:in `check_in'
+  [1m[36mHabitCheckin Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "habit_checkins" WHERE "habit_checkins"."checked_on" = $1 AND "habit_checkins"."habit_id" = $2 LIMIT $3[0m  [["checked_on", "2025-06-05"], ["habit_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/habits_controller.rb:46:in `check_in'
+  [1m[36mHabitCheckin Create (0.6ms)[0m  [1m[32mINSERT INTO "habit_checkins" ("habit_id", "checked_on", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["habit_id", 1], ["checked_on", "2025-06-05"], ["created_at", "2025-06-04 10:36:36.352297"], ["updated_at", "2025-06-04 10:36:36.352297"]]
+  ↳ app/controllers/habits_controller.rb:46:in `check_in'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/habits_controller.rb:46:in `check_in'
+Redirected to http://localhost:3000/habits
+Completed 302 Found in 17ms (ActiveRecord: 6.5ms | Allocations: 6988)
+
+
+Started GET "/habits" for ::1 at 2025-06-04 16:06:36 +0530
+Processing by HabitsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering habits/index.html.erb within layouts/application
+  [1m[36mHabit Load (0.1ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Load (0.3ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" IN ($1, $2)[0m  [["habit_id", 1], ["habit_id", 2]]
+  ↳ app/views/habits/index.html.erb:3
+  [1m[36mHabitCheckin Pluck (0.1ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Pluck (0.1ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  Rendered habits/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 5655)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 6582)
+Completed 200 OK in 9ms (Views: 5.8ms | ActiveRecord: 0.8ms | Allocations: 8366)
+
+
+Started GET "/" for ::1 at 2025-06-04 16:10:11 +0530
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mHabit Load (0.2ms)[0m  [1m[34mSELECT "habits".* FROM "habits" WHERE "habits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/dashboard/index.html.erb:4
+  [1m[36mHabitCheckin Load (0.4ms)[0m  [1m[34mSELECT "habit_checkins".* FROM "habit_checkins" WHERE "habit_checkins"."habit_id" IN ($1, $2)[0m  [["habit_id", 1], ["habit_id", 2]]
+  ↳ app/views/dashboard/index.html.erb:4
+  [1m[36mHabitCheckin Pluck (0.2ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:45:in `consistency_percentage'
+  [1m[36mCACHE HabitCheckin Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 1]]
+  ↳ app/models/habit.rb:47:in `consistency_percentage'
+  [1m[36mHabitCheckin Pluck (0.2ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mCACHE HabitCheckin Pluck (0.0ms)[0m  [1m[34mSELECT "habit_checkins"."checked_on" FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1 ORDER BY "habit_checkins"."checked_on" ASC[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:8:in `checkin_dates'
+  [1m[36mHabitCheckin Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:45:in `consistency_percentage'
+  [1m[36mCACHE HabitCheckin Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "habit_checkins" WHERE "habit_checkins"."habit_id" = $1[0m  [["habit_id", 2]]
+  ↳ app/models/habit.rb:47:in `consistency_percentage'
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 8027)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 8953)
+Completed 200 OK in 19ms (Views: 13.8ms | ActiveRecord: 1.8ms | Allocations: 10710)
+
+

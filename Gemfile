@@ -69,5 +69,5 @@ end
 gem 'pg'
 # gem "tailwindcss-rails"
 gem 'devise'
-
-
+gem 'sidekiq'
+gem "bootstrap", "~> 5.3"

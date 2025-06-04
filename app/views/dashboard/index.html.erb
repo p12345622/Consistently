@@ -1,0 +1,19 @@
+<h1 class="text-xl font-bold mb-4">Your Habits</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <% @habits.each do |habit| %>
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h2 class="font-semibold text-lg"><%= habit.name %></h2>
+      <p class="text-sm text-gray-500"><%= habit.description %></p>
+
+      <div class="mt-4 text-sm">
+         <strong>Current Streak:</strong> <%= habit.current_streak %> days <br>
+         <strong>Longest Streak:</strong> <%= habit.longest_streak %> days <br>
+         <strong>Consistency:</strong> <%= habit.consistency_percentage %>%
+      </div>
+
+	    <%= button_to "Check In Today", check_in_habit_path(habit), method: :post,
+      class: "bg-green-500 text-white px-3 py-1 rounded" %>
+    </div>
+  <% end %>
+</div>
