@@ -1,18 +1,50 @@
-<h1 class="text-2xl font-bold mb-4">My Habits</h1>
-
-<% @habits.each do |habit| %>
-  <div class="p-4 border rounded mb-4">
-    <h2 class="text-xl font-semibold"><%= habit.name %></h2>
-
-    <!-- Check-in button -->
-    <%= form_with url: check_in_habit_path(habit), method: :post, local: true do %>
-      <%= date_field_tag :date, Date.today, class: "border p-1 rounded" %>
-      <%= submit_tag "Check In", class: "bg-green-600 text-white px-3 py-1 rounded ml-2" %>
-    <% end %>
-
-    <p class="text-sm mt-2">
-      Current Streak: <%= habit.current_streak %> |
-      Longest: <%= habit.longest_streak %>
-    </p>
+<div class="max-w‑4xl mx-auto px‑4 py‑8">
+  <div class="flex justify-between items-center mb‑6">
+    <h1 class="text‑3xl font‑bold">Your Habits</h1>
+    <%= link_to "New Habit", new_habit_path, 
+                class: "bg‑blue‑500 hover:bg‑blue‑600 text‑white px‑4 py‑2 rounded" %>
   </div>
-<% end %>
+
+  <% if @habits.empty? %>
+    <p class="text‑gray‑600">You haven’t created any habits yet. Click “New Habit” to get started!</p>
+  <% else %>
+    <div class="grid grid‑cols‑1 md:grid‑cols‑2 gap‑6">
+      <% @habits.each do |habit| %>
+        <div class="border rounded‑lg shadow‑sm p‑4 flex flex-col">
+          <!-- Habit header -->
+          <div class="flex justify-between items-center">
+            <h2 class="text‑2xl font‑semibold"><%= habit.name %></h2>
+            <div class="space‑x‑2">
+              <%= link_to "Edit", edit_habit_path(habit), 
+                          class: "text‑yellow‑600 hover:text‑yellow‑800" %>
+              <%= link_to "Delete", habit_path(habit), method: :delete, data: { confirm: "Are you sure?" }, 
+                          class: "text‑red‑600 hover:text‑red‑800" %>
+            </div>
+          </div>
+
+          <!-- Habit description -->
+          <p class="mt‑2 text‑sm text‑gray‑700"><%= habit.description %></p>
+
+          <!-- Streak & consistency -->
+          <div class="mt‑4 space‑y‑1">
+            <p>🔥 <strong>Current Streak:</strong> <%= habit.current_streak %> days</p>
+            <p>🏆 <strong>Longest Streak:</strong> <%= habit.longest_streak %> days</p>
+            <p>📈 <strong>Consistency:</strong> <%= habit.consistency_percentage %>%</p>
+          </div>
+
+          <!-- Check‑in button / date selector -->
+          <div class="mt‑4">
+            <%= form_with url: check_in_habit_path(habit), method: :post, local: true do %>
+              <div class="flex space‑x‑2">
+                <%= date_field_tag :date, Date.today, 
+                      class: "border rounded px‑2 py‑1 flex‑1" %>
+                <%= submit_tag "Check In", 
+                      class: "bg‑green‑500 hover:bg‑green‑600 text‑white px‑4 py‑1 rounded" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

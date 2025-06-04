@@ -1,0 +1,21 @@
+<%= form_with model: habit, local: true do |f| %>
+  <div class="space‑y‑4">
+    <div>
+      <%= f.label :name, class: "block text‑sm font‑medium text‑gray‑700" %>
+      <%= f.text_field :name, class: "mt‑1 block w‑full border rounded px‑3 py‑2" %>
+      <%= f.object.errors[:name].any? ? 
+            content_tag(:p, f.object.errors[:name].join(", "), class: "text‑red‑600 text‑sm") : "" %>
+    </div>
+
+    <div>
+      <%= f.label :description, class: "block text‑sm font‑medium text‑gray‑700" %>
+      <%= f.text_area :description, rows: 3, class: "mt‑1 block w‑full border rounded px‑3 py‑2" %>
+      <%= f.object.errors[:description].any? ? 
+            content_tag(:p, f.object.errors[:description].join(", "), class: "text‑red‑600 text‑sm") : "" %>
+    </div>
+
+    <div class="flex justify‑end">
+      <%= f.submit class: "bg‑blue‑500 hover:bg‑blue‑600 text‑white px‑4 py‑2 rounded" %>
+    </div>
+  </div>
+<% end %>
